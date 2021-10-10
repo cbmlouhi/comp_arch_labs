@@ -37,10 +37,10 @@ int compare(char* str){
 		}
 	}
 	if(*str == 'L'){
-		return 3;  //L
+		return 3;  //LW
 	}
 	if(*str == 'S'){
-		return 4;  //
+		return 4;  //SW
 	}
 	return -1;
 
@@ -191,7 +191,7 @@ int main(){
 
 	char* instruction = malloc(1000 * sizeof(char));
 	bool is_null = false;
-	// fgets() returns null if EOF is reached.
+	//fgets() returns null if EOF is reached.
 	is_null = fgets(instruction, 1000, stdin) == NULL;
 	//write_read_demo();
 	while(!is_null){
