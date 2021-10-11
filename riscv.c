@@ -54,7 +54,6 @@ int compare(char* str){
  * as a parameter to this function.
  */
 bool interpret(char* instr){
-	//instr = strtok(instr," ");
 	char *itr = NULL;
 	char** tokens = NULL;  //Store tokens in double pointer
 	int size = 0;
@@ -68,9 +67,9 @@ bool interpret(char* instr){
 		size++;
 	}
 	itr = tokens[0];
-	//printf("%s",itr);
 	
-	int i = compare(tokens[0]);
+	
+	int i = compare(tokens[0]);  //determines which insruction
 	
 	if(i == -1){
 		return false;
@@ -89,7 +88,7 @@ bool interpret(char* instr){
 		itr++;
 		int reg3 = atoi(itr);
 		reg[reg1] = reg[reg3] + reg[reg2];   //adds reg values
-		//printf("%d",reg[reg1]);}
+	
 		}
 		else{
 			
@@ -105,7 +104,7 @@ bool interpret(char* instr){
 		reg[reg1] = reg[reg2] + imm; //adds imm
 		}
 		
-		//write_address(reg[reg1],)
+	
 		
 
 		return true;
@@ -135,7 +134,6 @@ bool interpret(char* instr){
 			int data = atoi(tokens[2]) + reg[atoi(tokens[3])]; //data to store
 			int32_t write = write_address(data, dest, mem_file);
 			int32_t read = read_address(dest, mem_file);
-			//printf("Read address %lu (0x%lX): %lu (0x%lX)\n", dest, dest, read, read);
 			printf("Read address %lu (0x%lX): %lu (0x%lX)\n", dest, dest, read, read);
 		}
 		
@@ -143,11 +141,7 @@ bool interpret(char* instr){
 
 	}
 	
-
-	
-	
 }
-
 
 /**
  * Simple demo program to show the usage of read_address() and write_address() found in memory.c
@@ -184,9 +178,6 @@ int main(){
 
 	print_regs();
 
-	// Below is a sample program to a write-read. Overwrite this with your own code.
-	//write_read_demo();
-
 	printf(" RV32 Interpreter.\nType RV32 instructions. Use upper-case letters and space as a delimiter.\nEnter '^c'  to end program\n");
 
 	char* instruction = malloc(1000 * sizeof(char));
@@ -197,7 +188,7 @@ int main(){
 	while(!is_null){
 		instruction = strtok(instruction," ");	
 		
-		printf(interpret(instruction) ? "true" : "false");
+		printf(interpret(instruction) ? "true" : "false"); //returns true or false after every instruction
 		printf("\n");
 		print_regs();
 		printf("\n");
