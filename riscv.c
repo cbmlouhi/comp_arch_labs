@@ -130,8 +130,8 @@ bool interpret(char* instr){
 		}
 		else{
 		
-			int dest = atoi(itr);  //destination address for memory
-			int data = atoi(tokens[2]) + reg[atoi(tokens[3])]; //data to store
+			int data = reg[atoi(itr)];  //destination address for memory
+			int dest = atoi(tokens[2]) + reg[atoi(tokens[3])]; //data to store
 			int32_t write = write_address(data, dest, mem_file);
 			int32_t read = read_address(dest, mem_file);
 			printf("Read address %lu (0x%lX): %lu (0x%lX)\n", dest, dest, read, read);
